@@ -1,0 +1,23 @@
+<?php
+
+use Complier\MainCompiler;
+
+include "autoload.php";
+
+$vars = ["a" => 5,"b" => 2];
+$activeCode = "addTwoNum(a,b)";
+
+//Python Code!!!!
+$code = "def addTwoNum(a,b):
+    return a+b
+";
+$mainCompilerPython = new MainCompiler("python");
+
+//PHP Code!!!!
+$code = '<?php 
+function addTwoNum($a,$b){
+    return $a+$b;
+}';
+
+$mainCompilerPhp = new MainCompiler("php");
+var_dump($mainCompilerPhp->executeSolution($code,$vars,$activeCode));
